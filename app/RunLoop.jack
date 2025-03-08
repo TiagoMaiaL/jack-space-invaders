@@ -1,0 +1,33 @@
+/** Controls game interactivity */
+
+class RunLoop {
+    // TODO: Hold enemies, spaceship and bullets.
+    // Make these objects perform their actions
+    // every cycle.
+    field boolean isRunning;
+
+    constructor RunLoop new()
+    {
+        let isRunning = false;
+        return this;
+    }
+
+    method void start()
+    {
+        let isRunning = true;
+
+        while(isRunning)
+        {
+            // TODO: Make each interactive
+            // element act.
+        }
+
+        return;
+    }
+
+    method void stop()
+    {
+        let isRunning = false;
+        return;
+    }
+}

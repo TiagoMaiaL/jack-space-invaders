@@ -1,10 +1,13 @@
-/** Prints hello world */
-
 class Main {
     function void main()
     {
-        do Output.printString("Hello world");
-        do Output.println();
+        // do Screen.setColor(true);
+        // do Screen.drawRectangle(25, 25, 100, 100);
+
+        var RunLoop runLoop; 
+        let runLoop = RunLoop.new();
+        do runLoop.start();
+
         return;
     }
 }
