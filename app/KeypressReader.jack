@@ -1,0 +1,28 @@
+/** Checks if specific keys are pressed or not. */
+
+class KeypressReader {
+    function boolean leftArrPressed()
+    {
+        return Keyboard.keyPressed() = 130;
+    }
+
+    function boolean upArrPressed()
+    {
+        return Keyboard.keyPressed() = 131;
+    }
+
+    function boolean rightArrPressed()
+    {
+        return Keyboard.keyPressed() = 132;
+    }
+
+    function boolean downArrPressed()
+    {
+        return Keyboard.keyPressed() = 133;
+    }
+
+    function boolean spaceArrPressed()
+    {
+        return Keyboard.keyPressed() = 32;
+    }
+}
