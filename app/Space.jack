@@ -1,0 +1,54 @@
+/** Represents the game canvas. */
+
+class Space {
+    field int x, y;
+    field int width, height;
+
+    constructor Space new()
+    {
+        let x = 0;
+        let y = 0;
+        let width = 10;
+        let height = 10;
+        return this;
+    }
+    
+    method void draw()
+    {
+        var int x2, y2;
+
+        let x2 = x + width;
+        let y2 = y + height;
+        
+        do Screen.clearScreen();
+        do Screen.drawRectangle(x, y, x2, y2);
+
+        return;
+    }
+
+    method void act()
+    {
+        if (KeypressReader.leftArrPressed()) {
+            let x = x - 1;
+        }
+
+        if (KeypressReader.upArrPressed()) {
+            let y = y - 1;
+        }
+
+        if (KeypressReader.rightArrPressed()) {
+            let x = x + 1;
+        }
+
+        if (KeypressReader.downArrPressed()) {
+            let y = y + 1;
+        }
+
+        if (KeypressReader.spaceArrPressed()) {
+            let x = 0;
+            let y = 0;
+        }
+
+        return;
+    }
+}
