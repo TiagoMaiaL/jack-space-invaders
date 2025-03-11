@@ -1,0 +1,39 @@
+/** Facilitates checking of screen bounds. */
+
+class ScreenBounds {
+    function int getWidth()
+    {
+        return 512;
+    }
+
+    function int getHeight()
+    {
+        return 256;
+    }
+
+    function boolean validate_x(int x)
+    {
+        if (x < 0) {
+            return false;
+        }
+
+        if (x > (ScreenBounds.getWidth() - 1)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    function boolean validate_y(int y)
+    {
+        if (y < 0) {
+            return false;
+        }
+
+        if (y > ScreenBounds.getHeight()) {
+            return false;
+        }
+
+        return true;
+    }
+}

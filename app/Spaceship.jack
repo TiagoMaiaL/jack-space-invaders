@@ -52,14 +52,20 @@ class Spaceship {
 
     method void move()
     {
-        // TODO: add screenbounds object.
-        // TODO: check for screen bounds.
         if (KeypressReader.leftArrPressed()) {
-            let x = x - 20;
+            if (ScreenBounds.validate_x(x - 20)) {
+                let x = x - 20;
+            } else {
+                let x = 0;
+            }
         }
 
         if (KeypressReader.rightArrPressed()) {
-            let x = x + 20;
+            if (ScreenBounds.validate_x(x + 20 + getWidth())) {
+                let x = x + 20;
+            } else {
+                let x = ScreenBounds.getWidth() - getWidth() - 1;
+            }
         }
 
         return;
