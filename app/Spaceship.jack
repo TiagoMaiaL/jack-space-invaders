@@ -1,0 +1,45 @@
+/** The user's spaceship. */
+
+class Spaceship {
+    field int x, y;
+    // TODO: Add lives to spaceship.
+
+    method int getX()
+    {
+        return x;
+    }
+
+    method int getY()
+    {
+        return y;
+    }
+    
+    constructor Spaceship new(int initialX, int initialY)
+    {
+        let x = initialX;
+        let y = initialY;
+        return this;
+    }
+
+    // TODO: Pass bounds object to action methods.
+    method void act()
+    {
+        do move();
+        return;
+    }
+
+    method void move()
+    {
+        // TODO: check for screen bounds.
+        if (KeypressReader.leftArrPressed()) {
+            let x = x - 20;
+        }
+
+        if (KeypressReader.rightArrPressed()) {
+            let x = x + 20;
+        }
+
+        return;
+    }
+}
+

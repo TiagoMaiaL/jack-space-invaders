@@ -13,10 +13,10 @@ A simple game inspired by Space Invaders written in Jack, for Nand2Tetris part I
 
 ### Phase 2
 
-- [ ] Create `Spaceship` class
+- [x] Create `Spaceship` class
 - [ ] Create `Enemy` class
 - [ ] Instantiate and place instances on screen (`Space` class)
-- [ ] Control spaceship using arrow keys
+- [x] Control spaceship using arrow keys
 
 ### Phase 3
 

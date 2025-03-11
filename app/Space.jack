@@ -1,54 +1,34 @@
 /** Represents the game canvas. */
 
 class Space {
-    field int x, y;
-    field int width, height;
+    field int shipHeight, shipWidth;
+    field int shipStartX, shipStartY;
+    field Spaceship ship;
 
     constructor Space new()
     {
-        let x = 0;
-        let y = 0;
-        let width = 10;
-        let height = 10;
+        let shipHeight = 10;
+        let shipWidth = 10;
+        let shipStartX = (512 - shipWidth) / 2;
+        let shipStartY = 256 - shipHeight;
+        let ship = Spaceship.new(shipStartX, shipStartY);
         return this;
     }
     
     method void draw()
     {
-        var int x2, y2;
-
-        let x2 = x + width;
-        let y2 = y + height;
-        
         do Screen.clearScreen();
-        do Screen.drawRectangle(x, y, x2, y2);
+        do Screen.drawRectangle(ship.getX(), ship.getY(), ship.getX() + shipWidth, ship.getY() + shipHeight);
 
         return;
     }
 
     method void act()
     {
-        if (KeypressReader.leftArrPressed()) {
-            let x = x - 1;
-        }
-
-        if (KeypressReader.upArrPressed()) {
-            let y = y - 1;
-        }
-
-        if (KeypressReader.rightArrPressed()) {
-            let x = x + 1;
-        }
-
-        if (KeypressReader.downArrPressed()) {
-            let y = y + 1;
-        }
-
-        if (KeypressReader.spaceArrPressed()) {
-            let x = 0;
-            let y = 0;
-        }
-
+        do ship.act();
         return;
     }
+
+    // TODO: Add method to detect collisions.
 }
+
