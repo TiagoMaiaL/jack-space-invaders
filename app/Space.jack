@@ -18,7 +18,7 @@ class Space {
     {
         let shipStartX = (512 - Space.getShipWidth()) / 2;
         let shipStartY = 256 - Space.getShipHeight();
-        let ship = Spaceship.new(shipStartX, shipStartY);
+        let ship = Spaceship.new(shipStartX, shipStartY, Space.getShipWidth(), Space.getShipHeight());
         return this;
     }
     

@@ -35,12 +35,12 @@ class Spaceship {
         return y + height;
     }
     
-    constructor Spaceship new(int initialX, int initialY)
+    constructor Spaceship new(int initialX, int initialY, int shipWidth, int shipHeight)
     {
         let x = initialX;
         let y = initialY;
-        let width = 10;
-        let height = 10;
+        let width = shipWidth;
+        let height = shipHeight;
         return this;
     }
 
