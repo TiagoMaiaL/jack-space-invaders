@@ -1,16 +1,23 @@
 /** Represents the game canvas. */
 
 class Space {
-    field int shipHeight, shipWidth;
     field int shipStartX, shipStartY;
     field Spaceship ship;
 
+    function int getShipHeight()
+    {
+        return 10;
+    }
+
+    function int getShipWidth()
+    {
+        return 10;
+    }
+
     constructor Space new()
     {
-        let shipHeight = 10;
-        let shipWidth = 10;
-        let shipStartX = (512 - shipWidth) / 2;
-        let shipStartY = 256 - shipHeight;
+        let shipStartX = (512 - Space.getShipWidth()) / 2;
+        let shipStartY = 256 - Space.getShipHeight();
         let ship = Spaceship.new(shipStartX, shipStartY);
         return this;
     }
@@ -18,7 +25,7 @@ class Space {
     method void draw()
     {
         do Screen.clearScreen();
-        do Screen.drawRectangle(ship.getX(), ship.getY(), ship.getX() + shipWidth, ship.getY() + shipHeight);
+        do Screen.drawRectangle(ship.getX(), ship.getY(), ship.getX2(), ship.getY2());
 
         return;
     }

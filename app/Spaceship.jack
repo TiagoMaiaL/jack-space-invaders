@@ -2,6 +2,7 @@
 
 class Spaceship {
     field int x, y;
+    field int width, height;
     // TODO: Add lives to spaceship.
 
     method int getX()
@@ -13,15 +14,36 @@ class Spaceship {
     {
         return y;
     }
+
+    method int getWidth()
+    {
+        return width;
+    }
+
+    method int getHeight()
+    {
+        return height;
+    }
+
+    method int getX2()
+    {
+        return x + width;
+    }
+
+    method int getY2()
+    {
+        return y + height;
+    }
     
     constructor Spaceship new(int initialX, int initialY)
     {
         let x = initialX;
         let y = initialY;
+        let width = 10;
+        let height = 10;
         return this;
     }
 
-    // TODO: Pass bounds object to action methods.
     method void act()
     {
         do move();
@@ -30,6 +52,7 @@ class Spaceship {
 
     method void move()
     {
+        // TODO: add screenbounds object.
         // TODO: check for screen bounds.
         if (KeypressReader.leftArrPressed()) {
             let x = x - 20;
