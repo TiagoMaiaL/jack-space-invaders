@@ -1,8 +1,10 @@
 /** Represents the game canvas. */
 
 class Space {
+    field int enemyI; // Used for iterating over enemies.
     field int shipStartX, shipStartY;
     field Spaceship ship;
+    field Array enemies;
 
     function int getShipHeight()
     {
@@ -14,18 +16,58 @@ class Space {
         return 10;
     }
 
+    function int getEnemiesCount()
+    {
+        return 1;
+    }
+
+    function int getEnemyWidth()
+    {
+        return 20;
+    }
+
+    function int getEnemyHeight()
+    {
+        return 20;
+    }
+
     constructor Space new()
     {
-        let shipStartX = (512 - Space.getShipWidth()) / 2;
-        let shipStartY = 256 - Space.getShipHeight();
+        let shipStartX = (ScreenBounds.getWidth() - Space.getShipWidth()) / 2;
+        let shipStartY = ScreenBounds.getHeight() - Space.getShipHeight();
         let ship = Spaceship.new(shipStartX, shipStartY, Space.getShipWidth(), Space.getShipHeight());
+        let enemies = Array.new(Space.getEnemiesCount());
+        let enemyI = 0;
+
+        while (enemyI < Space.getEnemiesCount()) {
+            let enemies[enemyI] = Enemy.new(5, 5, Space.getEnemyWidth(), Space.getEnemyHeight());
+            let enemyI = enemyI + 1;
+        }
+        
         return this;
     }
     
     method void draw()
     {
         do Screen.clearScreen();
+        do drawSpaceship();
+        do drawEnemies();
+        return;
+    }
+    
+    method void drawSpaceship()
+    {
         do Screen.drawRectangle(ship.getX(), ship.getY(), ship.getX2(), ship.getY2());
+        return;
+    }
+
+    method void drawEnemies()
+    {
+        // TODO: Draw enemies on a grid.
+        let enemyI = 0;
+        while (enemyI < Space.getEnemiesCount()) {
+            do Screen.drawCircle(5, 5, 5);
+        }
 
         return;
     }

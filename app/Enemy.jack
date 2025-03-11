@@ -1,0 +1,33 @@
+/** Represents an enemy to be destroyed. */
+
+class Enemy {
+    field int width, height;
+    field int x, y;
+
+    method int getWidth()
+    {
+        return width;
+    }
+
+    method int getHeight()
+    {
+        return height;
+    }
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    constructor Enemy new(int eX, int eY, int eWidth, int eHeight)
+    {
+        let x = eX;
+        let y = eY;
+        let width = eWidth;
+        let height = eHeight;
+        return this;
+    }
+}
