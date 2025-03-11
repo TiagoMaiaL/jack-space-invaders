@@ -26,12 +26,12 @@ A simple game inspired by Space Invaders written in Jack, for Nand2Tetris part I
 
 ### Phase 4
 
-- [ ] Make enemies move on screen, on every loop, getting closer to the bottom and spaceship
+- [ ] Detect collisions between bullets and enemies
+- [ ] If a bullet hits an enemy, make it disappear from screen
 
 ### Phase 5
 
-- [ ] Detect collisions between bullets and enemies
-- [ ] If a bullet hits an enemy, make it disappear from screen
+- [ ] Make enemies move on screen, on every loop, getting closer to the bottom and spaceship
 - [ ] If no enemies are left, player wins
 - [ ] If one enemy reaches the bottom, game is over
 - [ ] The less enemies on screen, the quicker they move
