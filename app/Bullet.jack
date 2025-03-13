@@ -1,0 +1,31 @@
+/** Represents a bullet shot by a Spacechip. */
+
+class Bullet {
+    field int x, y;
+    
+    constructor Bullet new(int initialX, int initialY)
+    {
+        let x = initialX;
+        let y = initialY;
+    }
+
+    method void run()
+    {
+        do travel();
+        return;
+    }
+
+    method void travel()
+    {
+        // TODO: Change the bullet y position.
+        return;
+    }
+
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
+
+

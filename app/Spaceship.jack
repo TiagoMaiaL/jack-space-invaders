@@ -43,10 +43,24 @@ class Spaceship {
         let height = shipHeight;
         return this;
     }
+    
+    field Bullet shotBullet;
+
+    method Bullet getShotBullet()
+    {
+        return shotBullet;
+    }
 
     method void act()
     {
         do move();
+
+        if (KeypressReader.spacePressed()) {
+            let shotBullet = shoot();
+        } else {
+            let shotBullet = null;
+        }
+
         return;
     }
 
@@ -69,6 +83,16 @@ class Spaceship {
         }
 
         return;
+    }
+
+    method Bullet shoot()
+    {
+        var Bullet bullet;
+        var int xOrigin;
+
+        let xOrigin = Math.divide(width, 2) + x;
+
+        let bullet = Bullet.new(xOrigin, y);
     }
 }
 
