@@ -21,7 +21,7 @@ class KeypressReader {
         return Keyboard.keyPressed() = 133;
     }
 
-    function boolean spaceArrPressed()
+    function boolean spacePressed()
     {
         return Keyboard.keyPressed() = 32;
     }

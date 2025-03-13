@@ -4,6 +4,12 @@ class Spaceship {
     field int x, y;
     field int width, height;
     // TODO: Add lives to spaceship.
+    field Bullet shotBullet;
+
+    method Bullet getShotBullet()
+    {
+        return shotBullet;
+    }
 
     method int getX()
     {
@@ -44,13 +50,6 @@ class Spaceship {
         return this;
     }
     
-    field Bullet shotBullet;
-
-    method Bullet getShotBullet()
-    {
-        return shotBullet;
-    }
-
     method void act()
     {
         do move();
@@ -91,8 +90,9 @@ class Spaceship {
         var int xOrigin;
 
         let xOrigin = Math.divide(width, 2) + x;
-
         let bullet = Bullet.new(xOrigin, y);
+
+        return bullet;
     }
 }
 

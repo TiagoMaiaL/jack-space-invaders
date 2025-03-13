@@ -75,6 +75,13 @@ class Space {
     method void act()
     {
         do ship.act();
+        
+        if (~(ship.getShotBullet() = null)) {
+            // TODO: hold bullet
+            // TODO: draw it
+            // TODO: make it act
+        }
+
         return;
     }
 
