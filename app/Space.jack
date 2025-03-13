@@ -5,6 +5,8 @@ class Space {
     field int shipStartX, shipStartY;
     field Spaceship ship;
     field Array enemies;
+    // TODO: Hold an array of bullets.
+    field Bullet shotBullet;
 
     function int getShipHeight()
     {
@@ -38,12 +40,12 @@ class Space {
         let ship = Spaceship.new(shipStartX, shipStartY, Space.getShipWidth(), Space.getShipHeight());
         let enemies = Array.new(Space.getEnemiesCount());
         let enemyI = 0;
-
         while (enemyI < Space.getEnemiesCount()) {
             let enemies[enemyI] = Enemy.new(5, 5, Space.getEnemyWidth(), Space.getEnemyHeight());
             let enemyI = enemyI + 1;
         }
-        
+        let shotBullet = null;
+
         return this;
     }
     
@@ -52,6 +54,7 @@ class Space {
         do Screen.clearScreen();
         do drawSpaceship();
         do drawEnemies();
+        do drawBullets();
         return;
     }
     
@@ -67,6 +70,16 @@ class Space {
         let enemyI = 0;
         while (enemyI < Space.getEnemiesCount()) {
             do Screen.drawCircle(5, 5, 5);
+            let enemyI = enemyI + 1;
+        }
+
+        return;
+    }
+
+    method void drawBullets()
+    {
+        if (~(shotBullet = null)) {
+            do Screen.drawRectangle(shotBullet.getX(), shotBullet.getY(), shotBullet.getX2(), shotBullet.getY2());
         }
 
         return;
@@ -75,16 +88,18 @@ class Space {
     method void act()
     {
         do ship.act();
+
+        // TODO: detect collisions:
+        // 1. bullets vs. enemies (dispose both instances and clear screen)
+        // 2. any enemy reaching base (game over)
         
         if (~(ship.getShotBullet() = null)) {
-            // TODO: hold bullet
-            // TODO: draw it
-            // TODO: make it act
+            // TODO: Add bullet to array of bullets in space.
+            let shotBullet = ship.getShotBullet();
+            do shotBullet.act();
         }
 
         return;
     }
-
-    // TODO: Add method to detect collisions.
 }
 

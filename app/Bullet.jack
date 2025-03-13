@@ -2,15 +2,48 @@
 
 class Bullet {
     field int x, y;
+    field int width, height;
+
+    method int getX()
+    {
+        return x;
+    }
+
+    method int getY()
+    {
+        return y;
+    }
+
+    method int getWidth()
+    {
+        return width;
+    }
+
+    method int getHeight()
+    {
+        return height;
+    }
     
-    constructor Bullet new(int initialX, int initialY)
+    method int getX2()
+    {
+        return x + width;
+    }
+
+    method int getY2()
+    {
+        return y + height;
+    }
+
+    constructor Bullet new(int initialX, int initialY, int givenWidth, int givenHeight)
     {
         let x = initialX;
         let y = initialY;
+        let width = givenWidth;
+        let height = givenHeight;
         return this;
     }
 
-    method void run()
+    method void act()
     {
         do travel();
         return;

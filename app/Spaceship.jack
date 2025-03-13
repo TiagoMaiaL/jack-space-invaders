@@ -6,9 +6,14 @@ class Spaceship {
     // TODO: Add lives to spaceship.
     field Bullet shotBullet;
 
-    method Bullet getShotBullet()
+    function int getBulletWidth()
     {
-        return shotBullet;
+        return 2;
+    }
+
+    function int getBulletHeight()
+    {
+        return 4;
     }
 
     method int getX()
@@ -40,30 +45,31 @@ class Spaceship {
     {
         return y + height;
     }
-    
+
+    method Bullet getShotBullet()
+    {
+        return shotBullet;
+    }
+
     constructor Spaceship new(int initialX, int initialY, int shipWidth, int shipHeight)
     {
         let x = initialX;
         let y = initialY;
         let width = shipWidth;
         let height = shipHeight;
+        let shotBullet = null;
         return this;
     }
     
     method void act()
     {
-        do move();
-
-        if (KeypressReader.spacePressed()) {
-            let shotBullet = shoot();
-        } else {
-            let shotBullet = null;
-        }
+        do moveIfNeeded();
+        do shootIfNeeded();
 
         return;
     }
 
-    method void move()
+    method void moveIfNeeded()
     {
         if (KeypressReader.leftArrPressed()) {
             if (ScreenBounds.validate_x(x - 20)) {
@@ -84,15 +90,20 @@ class Spaceship {
         return;
     }
 
-    method Bullet shoot()
+    method void shootIfNeeded()
     {
-        var Bullet bullet;
         var int xOrigin;
 
-        let xOrigin = Math.divide(width, 2) + x;
-        let bullet = Bullet.new(xOrigin, y);
+        if (KeypressReader.spacePressed()) {
 
-        return bullet;
+            let xOrigin = Math.divide(width, 2) + x;
+            let shotBullet = Bullet.new(xOrigin, y, Spaceship.getBulletWidth(), Spaceship.getBulletHeight());
+
+        } else {
+            let shotBullet = null;
+        }
+
+        return;
     }
 }
 
