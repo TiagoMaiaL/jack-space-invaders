@@ -21,9 +21,10 @@ A simple game inspired by Space Invaders written in Jack, for Nand2Tetris part I
 
 ### Phase 3
 
-- [ ] Create `Bullet` class
+- [x] Create `Bullet` class
 - [ ] Place it on screen, make it travel on every loop
 - [ ] Make spaceship shoot a bullet when user hits the "space" key
+- [ ] Allow spaceship to shoot multiple bullets
 
 ### Phase 4
 
