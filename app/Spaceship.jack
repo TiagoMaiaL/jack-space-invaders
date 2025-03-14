@@ -3,7 +3,6 @@
 class Spaceship {
     field int x, y;
     field int width, height;
-    // TODO: Add lives to spaceship.
     field Bullet shotBullet;
 
     function int getBulletWidth()
@@ -103,6 +102,12 @@ class Spaceship {
             let shotBullet = null;
         }
 
+        return;
+    }
+
+    method void dispose() 
+    {
+        do Memory.deAlloc(this);
         return;
     }
 }

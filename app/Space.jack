@@ -5,6 +5,7 @@ class Space {
     field int shipStartX, shipStartY;
     field Spaceship ship;
     field Array enemies;
+    field int enemiesLeftCount;
     field Bullet shotBullet;
     field boolean didEnemyReachBase;
 
@@ -43,6 +44,11 @@ class Space {
         return didEnemyReachBase;
     }
 
+    method int getEnemiesLeftCount()
+    {
+        return enemiesLeftCount;
+    }
+
     constructor Space new()
     {
         let shipStartX = (ScreenBounds.getWidth() - Space.getShipWidth()) / 2;
@@ -53,6 +59,7 @@ class Space {
             Space.getShipWidth(), 
             Space.getShipHeight()
         );
+        let enemiesLeftCount = Space.getEnemiesCount();
         let enemies = Array.new(Space.getEnemiesCount());
         let enemyI = 0;
         while (enemyI < Space.getEnemiesCount()) {
@@ -201,6 +208,7 @@ class Space {
                     do enemy.dispose();
                     let shotBullet = null;
                     let enemies[enemyI] = null;
+                    let enemiesLeftCount = enemiesLeftCount - 1;
                 }
 
                 let enemyI = enemyI + 1;
@@ -220,6 +228,31 @@ class Space {
 
             let enemyI = enemyI + 1;
         }
+
+        return;
+    }
+
+    method void dispose()
+    {
+        var Enemy enemy;
+
+        do ship.dispose();
+        
+        if (~(shotBullet = null)) {
+            do shotBullet.dispose();
+        }
+
+        let enemy = null;
+        let enemyI = 0;
+        while (enemyI < Space.getEnemiesCount()) {
+            let enemy = enemies[enemyI];
+            if (~(enemy = null)) {
+                do enemy.dispose();
+            }
+            let enemyI = enemyI + 1;
+        }
+
+        do Memory.deAlloc(this);
 
         return;
     }

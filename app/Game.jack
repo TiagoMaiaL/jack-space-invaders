@@ -9,6 +9,11 @@ class Game {
         return isOver;
     }
 
+    method boolean getUserWon()
+    {
+        return userWon;
+    }
+
     constructor Game new()
     {
         let isOver = false;
@@ -25,12 +30,23 @@ class Game {
             let isOver = true;
         }
 
+        if (space.getEnemiesLeftCount() = 0) {
+            let userWon = true;
+        }
+
         return;
     }
 
     method void draw()
     {
         do space.draw();
+        return;
+    }
+
+    method void dispose()
+    {
+        do space.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }

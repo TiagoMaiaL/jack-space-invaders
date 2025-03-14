@@ -22,11 +22,17 @@ class RunLoop {
 
             if (game.getIsOver()) {
                 do stop();
+                do game.dispose();
                 do Screen.clearScreen();
                 do Output.printString("Game Over");
             }
 
-            // TODO: Check if user won the game.
+            if (game.getUserWon()) {
+                do stop();
+                do game.dispose();
+                do Screen.clearScreen();
+                do Output.printString("You won!");
+            }
         }
 
         return;
@@ -35,6 +41,13 @@ class RunLoop {
     method void stop()
     {
         let isRunning = false;
+        return;
+    }
+
+    method void dispose() 
+    {
+        do game.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }
