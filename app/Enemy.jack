@@ -14,12 +14,24 @@ class Enemy {
         return height;
     }
 
-    method int getX() {
+    method int getX()
+    {
         return x;
     }
 
-    method int getY() {
+    method int getY()
+    {
         return y;
+    }
+
+    method int getX2()
+    {
+        return x + width;
+    }
+
+    method int getY2()
+    {
+        return y + height;
     }
 
     constructor Enemy new(int eX, int eY, int eWidth, int eHeight)
@@ -29,5 +41,11 @@ class Enemy {
         let width = eWidth;
         let height = eHeight;
         return this;
+    }
+
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
     }
 }

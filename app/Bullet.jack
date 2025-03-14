@@ -7,7 +7,7 @@ class Bullet {
 
     function int getDebounceFactor()
     {
-        return 20;
+        return 10;
     }
 
     method int getX()
