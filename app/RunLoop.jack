@@ -1,9 +1,6 @@
 /** Controls game interactivity */
 
 class RunLoop {
-    // TODO: Hold enemies, spaceship and bullets.
-    // Make these objects perform their actions
-    // every cycle.
     field boolean isRunning;
     field Space space;
 
@@ -20,8 +17,6 @@ class RunLoop {
 
         while(isRunning)
         {
-            // TODO: Make each interactive
-            // element act.
             do space.act();
             do space.draw();
         }
