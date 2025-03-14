@@ -34,7 +34,7 @@ A simple game inspired by Space Invaders written in Jack, for Nand2Tetris part I
 ### Phase 5
 
 - [x] Draw a delimiter for user's base
-- [ ] Make enemies move on screen, on every loop, getting closer to the base
+- [x] Make enemies move on screen, on every loop, getting closer to the base
 - [ ] If one enemy reaches the base, game is over
 - [ ] If no enemies are left, player wins
 - [ ] The less enemies on screen, the quicker they move

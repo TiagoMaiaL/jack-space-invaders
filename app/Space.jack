@@ -137,6 +137,8 @@ class Space {
 
     method void act()
     {
+        var Enemy enemy;
+
         do ship.act();
 
         if (~(shotBullet = null)) {
@@ -147,6 +149,19 @@ class Space {
                 
         if (~(ship.getShotBullet() = null)) {
             let shotBullet = ship.getShotBullet();
+        }
+
+        let enemy = null;
+        let enemyI = 0;
+
+        while (enemyI < Space.getEnemiesCount()) {
+            let enemy = enemies[enemyI];
+
+            if (~(enemy = null)) {
+                do enemy.act();
+            }
+
+            let enemyI = enemyI + 1;
         }
 
         return;

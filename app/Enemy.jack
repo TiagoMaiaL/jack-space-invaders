@@ -3,6 +3,12 @@
 class Enemy {
     field int width, height;
     field int x, y;
+    field int cycleCount;
+
+    function int getDebounceFactor()
+    {
+        return 50;
+    }
 
     method int getWidth()
     {
@@ -40,7 +46,26 @@ class Enemy {
         let y = eY;
         let width = eWidth;
         let height = eHeight;
+        let cycleCount = 0;
         return this;
+    }
+
+    method void act()
+    {
+        if (Math.divide(cycleCount, Enemy.getDebounceFactor()) = 1) {
+            do tryInvading();
+            let cycleCount = 0;
+        } else {
+            let cycleCount = cycleCount + 1;
+        }
+
+        return;
+    }
+
+    method void tryInvading()
+    {
+        let y = y + 1;
+        return;
     }
 
     method void dispose()
