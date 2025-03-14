@@ -95,12 +95,8 @@ class Spaceship {
         var int xOrigin;
 
         if (KeypressReader.spacePressed()) {
-
             let xOrigin = Math.divide(width, 2) + x;
             let shotBullet = Bullet.new(xOrigin, y, Spaceship.getBulletWidth(), Spaceship.getBulletHeight());
-
-        } else {
-            let shotBullet = null;
         }
 
         return;

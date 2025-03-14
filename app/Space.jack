@@ -1,12 +1,12 @@
 /** Represents the game canvas. */
 
 class Space {
-    field int enemyI; // Used for iterating over enemies.
+    field int enemyI;
     field int shipStartX, shipStartY;
     field Spaceship ship;
     field Array enemies;
-    // TODO: Hold an array of bullets.
-    field Bullet shotBullet;
+    field int bulletI;
+    field Array shotBullets;
 
     function int getShipHeight()
     {
@@ -33,6 +33,11 @@ class Space {
         return 20;
     }
 
+    function int getMaxBulletsCount()
+    {
+        return 10;
+    }
+
     constructor Space new()
     {
         let shipStartX = (ScreenBounds.getWidth() - Space.getShipWidth()) / 2;
@@ -44,7 +49,12 @@ class Space {
             let enemies[enemyI] = Enemy.new(5, 5, Space.getEnemyWidth(), Space.getEnemyHeight());
             let enemyI = enemyI + 1;
         }
-        let shotBullet = null;
+        let shotBullets = Array.new(Space.getMaxBulletsCount());
+        let bulletI = 0;
+        while (bulletI < Space.getMaxBulletsCount()) {
+            let shotBullets[bulletI] = null;
+            let bulletI = bulletI + 1;
+        }
 
         return this;
     }
@@ -78,8 +88,18 @@ class Space {
 
     method void drawBullets()
     {
-        if (~(shotBullet = null)) {
-            do Screen.drawRectangle(shotBullet.getX(), shotBullet.getY(), shotBullet.getX2(), shotBullet.getY2());
+        var Bullet bullet;
+        let bullet = null;
+        let bulletI = 0;
+
+        while (bulletI < Space.getMaxBulletsCount()) {
+            let bullet = shotBullets[bulletI]; 
+
+            if (~(bullet = null)) {
+                do Screen.drawRectangle(bullet.getX(), bullet.getY(), bullet.getX2(), bullet.getY2());
+            }
+
+            let bulletI = bulletI + 1;
         }
 
         return;
@@ -87,23 +107,41 @@ class Space {
 
     method void act()
     {
+        var Bullet bullet;
+
         do ship.act();
 
         // TODO: detect collisions:
         // 1. bullets vs. enemies (dispose both instances and clear screen)
         // 2. any enemy reaching base (game over)
 
-        if (~(shotBullet = null)) {
-            do shotBullet.act();
-            if (shotBullet.getY() = 0) {
-                do shotBullet.dispose();
-                let shotBullet = null;
+        let bulletI = 0;
+        let bullet = null;
+        while (bulletI < Space.getMaxBulletsCount()) {
+            let bullet = shotBullets[bulletI];
+
+            if (~(bullet = null)) {
+                do bullet.act();
+
+                if (bullet.getY() = 0) {
+                    do bullet.dispose();
+                    let shotBullets[bulletI] = null;
+                }    
             }
+
+            let bulletI = bulletI + 1;
         }
-                
+        
         if (~(ship.getShotBullet() = null)) {
-            // TODO: Add bullet to array of bullets in space.
-            let shotBullet = ship.getShotBullet();
+            let bulletI = 0;
+            let bullet = null;
+            while (bulletI < Space.getMaxBulletsCount()) {
+                let bullet = shotBullets[bulletI];
+                if (bullet = null) {
+                    let shotBullets[bulletI] = ship.getShotBullet();
+                }
+                let bulletI = bulletI + 1;
+            }
         }
 
         return;
