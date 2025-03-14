@@ -92,11 +92,18 @@ class Space {
         // TODO: detect collisions:
         // 1. bullets vs. enemies (dispose both instances and clear screen)
         // 2. any enemy reaching base (game over)
-        
+
+        if (~(shotBullet = null)) {
+            do shotBullet.act();
+            if (shotBullet.getY() = 0) {
+                do shotBullet.dispose();
+                let shotBullet = null;
+            }
+        }
+                
         if (~(ship.getShotBullet() = null)) {
             // TODO: Add bullet to array of bullets in space.
             let shotBullet = ship.getShotBullet();
-            do shotBullet.act();
         }
 
         return;

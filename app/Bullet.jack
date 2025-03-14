@@ -51,7 +51,11 @@ class Bullet {
 
     method void travel()
     {
-        // TODO: Change the bullet y position.
+        // TODO: Make travelling slower
+        // Only perform this action every n cycles
+        if (ScreenBounds.validate_y(y - 1)) {
+            let y = y - 1;
+        }
         return;
     }
 
@@ -61,5 +65,4 @@ class Bullet {
         return;
     }
 }
-
 
