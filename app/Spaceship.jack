@@ -7,12 +7,12 @@ class Spaceship {
 
     function int getBulletWidth()
     {
-        return 2;
+        return 3;
     }
 
     function int getBulletHeight()
     {
-        return 4;
+        return 9;
     }
 
     method int getX()
