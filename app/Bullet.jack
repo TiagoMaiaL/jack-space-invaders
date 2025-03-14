@@ -3,6 +3,12 @@
 class Bullet {
     field int x, y;
     field int width, height;
+    field int cycleCount;
+
+    function int getDebounceFactor()
+    {
+        return 20;
+    }
 
     method int getX()
     {
@@ -40,19 +46,24 @@ class Bullet {
         let y = initialY;
         let width = givenWidth;
         let height = givenHeight;
+        let cycleCount = 0;
         return this;
     }
 
     method void act()
     {
-        do travel();
+        if (Math.divide(cycleCount, Bullet.getDebounceFactor()) = 1) {
+            do travel();
+            let cycleCount = 0;
+        } else {
+            let cycleCount = cycleCount + 1;
+        }
+
         return;
     }
 
     method void travel()
     {
-        // TODO: Make travelling slower
-        // Only perform this action every n cycles
         if (ScreenBounds.validate_y(y - 1)) {
             let y = y - 1;
         }
