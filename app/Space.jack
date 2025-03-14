@@ -6,6 +6,7 @@ class Space {
     field Spaceship ship;
     field Array enemies;
     field Bullet shotBullet;
+    field boolean didEnemyReachBase;
 
     function int getShipHeight()
     {
@@ -37,6 +38,11 @@ class Space {
         return ScreenBounds.getHeight() - Space.getShipHeight() - 5;
     }
 
+    method boolean getDidEnemyReachBase()
+    {
+        return didEnemyReachBase;
+    }
+
     constructor Space new()
     {
         let shipStartX = (ScreenBounds.getWidth() - Space.getShipWidth()) / 2;
@@ -59,6 +65,7 @@ class Space {
             let enemyI = enemyI + 1;
         }
         let shotBullet = null;
+        let didEnemyReachBase = false;
 
         return this;
     }
@@ -198,6 +205,20 @@ class Space {
 
                 let enemyI = enemyI + 1;
             }
+        }
+
+        let enemyI = 0;
+        let enemy = null;
+        while (enemyI < Space.getEnemiesCount()) {
+            let enemy = enemies[enemyI];
+
+            if (~(enemy = null)) {
+                if (enemy.getY2() > Space.getBaseY()) {
+                    let didEnemyReachBase = true;
+                }
+            }
+
+            let enemyI = enemyI + 1;
         }
 
         return;

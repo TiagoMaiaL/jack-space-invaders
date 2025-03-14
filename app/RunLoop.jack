@@ -2,12 +2,12 @@
 
 class RunLoop {
     field boolean isRunning;
-    field Space space;
+    field Game game;
 
     constructor RunLoop new()
     {
         let isRunning = false;
-        let space = Space.new();
+        let game = Game.new();
         return this;
     }
 
@@ -17,8 +17,16 @@ class RunLoop {
 
         while(isRunning)
         {
-            do space.act();
-            do space.draw();
+            do game.act();
+            do game.draw();
+
+            if (game.getIsOver()) {
+                do stop();
+                do Screen.clearScreen();
+                do Output.printString("Game Over");
+            }
+
+            // TODO: Check if user won the game.
         }
 
         return;

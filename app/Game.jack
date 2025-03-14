@@ -1,0 +1,36 @@
+/** Represents and controls general game state. */
+
+class Game {
+    field boolean isOver, userWon;
+    field Space space;
+
+    method boolean getIsOver()
+    {
+        return isOver;
+    }
+
+    constructor Game new()
+    {
+        let isOver = false;
+        let userWon = false;
+        let space = Space.new();
+        return this;
+    }
+
+    method void act()
+    {
+        do space.act();
+
+        if (space.getDidEnemyReachBase()) {
+            let isOver = true;
+        }
+
+        return;
+    }
+
+    method void draw()
+    {
+        do space.draw();
+        return;
+    }
+}
