@@ -43,6 +43,7 @@ A simple game inspired by Space Invaders written in Jack, for Nand2Tetris part I
 - [ ] Slow down the game's run loop (find a sweet spot)
 - [ ] Improve drawing performance
 - [ ] Draw specific shapes for spaceship and enemies
+- [ ] Add initial game screen
 
 ## TODO: Provide screenshot
 
